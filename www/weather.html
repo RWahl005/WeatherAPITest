@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="weatherz.css">
+    </head>
+    <body>
+        <h1 id="city">City</h1>
+        <h3 id="county">County</h3>
+        <main>
+            <section id="buttons">
+                <button id="tdyBtn" onclick="clickToday()">Today</button>
+                <button>Hourly</button>
+                <button>Weekly</button>
+            </section>
+            <section id="info">
+                <section id="today">
+                    <h2>Today</h2>
+                    <h3>October 3rd, 2019</h3>
+                    <section id="morning">
+                        <h4 id="t1">This a</h4>
+                        <p class="symbol" id="t1symbol"></p>
+                        <p id="t1forecast">Chance Showers And Thunderstorms</p>
+                        <ul>
+                            <li id="t1temp">Temperature: 90F</li>
+                            <li id="t1wind">Wind: 10 mph SE</li>
+                        </ul>
+                        <h5>Detailed Description:</h5>
+                        <p id="t1desc"></p>
+                    </section>
+                    <section id="afternoon">
+                        <h4 id="t2">This Morning</h4>
+                        <p class="symbol" id="t2symbol"></p>
+                        <p id="t2forecast">Chance Showers And Thunderstorms</p>
+                        <ul>
+                            <li id="t2temp">Temperature: 90F</li>
+                            <li id="t2wind">Wind: 10 mph SE</li>
+                        </ul>
+                        <h5>Detailed Description:</h5>
+                        <p id="t2desc"></p>
+                    </section>
+                    <section id="tonight">
+                        <h4 id="t3">This Morning</h4>
+                        <p class="symbol" id="t3symbol"></p>
+                        <p id="t3forecast">Chance Showers And Thunderstorms</p>
+                        <ul>
+                            <li id="t3temp">Temperature: 90F</li>
+                            <li id="t3wind">Wind: 10 mph SE</li>
+                        </ul>
+                        <h5>Detailed Description:</h5>
+                        <p id="t3desc"></p>
+                    </section>
+                </section>
+            </section>
+            <section id="hourly">
+
+            </section>
+            <section id="weekly">
+
+            </section>
+        </main>
+        <script src="getweatherz.js"></script>
+    </body>
+</html>
