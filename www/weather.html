@@ -9,7 +9,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="weatherz.css">
+        <link rel="stylesheet" href="weathere.css">
     </head>
     <body>
         <h1 id="city">City</h1>
@@ -18,54 +18,45 @@
             <section id="buttons">
                 <button id="tdyBtn" onclick="clickToday()">Today</button>
                 <button>Hourly</button>
-                <button>Weekly</button>
+                <button onclick="clickWeekly()">Weekly</button>
             </section>
             <section id="info">
-                <section id="today">
-                    <h2>Today</h2>
-                    <h3>October 3rd, 2019</h3>
-                    <section id="morning">
-                        <h4 id="t1">This a</h4>
-                        <p class="symbol" id="t1symbol"></p>
-                        <p id="t1forecast">Chance Showers And Thunderstorms</p>
-                        <ul>
-                            <li id="t1temp">Temperature: 90F</li>
-                            <li id="t1wind">Wind: 10 mph SE</li>
-                        </ul>
-                        <h5>Detailed Description:</h5>
-                        <p id="t1desc"></p>
-                    </section>
-                    <section id="afternoon">
-                        <h4 id="t2">This Morning</h4>
-                        <p class="symbol" id="t2symbol"></p>
-                        <p id="t2forecast">Chance Showers And Thunderstorms</p>
-                        <ul>
-                            <li id="t2temp">Temperature: 90F</li>
-                            <li id="t2wind">Wind: 10 mph SE</li>
-                        </ul>
-                        <h5>Detailed Description:</h5>
-                        <p id="t2desc"></p>
-                    </section>
-                    <section id="tonight">
-                        <h4 id="t3">This Morning</h4>
-                        <p class="symbol" id="t3symbol"></p>
-                        <p id="t3forecast">Chance Showers And Thunderstorms</p>
-                        <ul>
-                            <li id="t3temp">Temperature: 90F</li>
-                            <li id="t3wind">Wind: 10 mph SE</li>
-                        </ul>
-                        <h5>Detailed Description:</h5>
-                        <p id="t3desc"></p>
-                    </section>
-                </section>
             </section>
             <section id="hourly">
-
             </section>
             <section id="weekly">
-
+                <h2>Weekly</h2>
+                <table id="weeklyTable">
+                    <tr>
+                        <th>Sunday</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wensday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
+                    <tr>
+                        <td>☀</td>
+                        <td>☀</td>
+                        <td>☀</td>
+                        <td>☀</td>
+                        <td>☀</td>
+                        <td>☀</td>
+                        <td>☀</td>
+                    </tr>
+                    <tr>
+                        <td>90F</td>
+                        <td>90F</td>
+                        <td>90F</td>
+                        <td>90F</td>
+                        <td>90F</td>
+                        <td>90F</td>
+                        <td>90F</td>
+                    </tr>
+                </table>
             </section>
         </main>
-        <script src="getweatherz.js"></script>
+        <script src="weatherq.js"></script>
     </body>
 </html>
