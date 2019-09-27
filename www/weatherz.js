@@ -7,14 +7,24 @@ fetch(`https:\\\\api.weather.gov/points/${o[0][1]},${o[1][1]}`).then(e => {
 }).then(r =>{
     console.log(r);
     getCounty(r);
-    document.getElementById("city").innerHTML = r.properties.relativeLocation.properties.city + ", " + r.properties.relativeLocation.properties.state
-});
+    document.getElementById("city").innerHTML = r.properties.relativeLocation.properties.city + ", " + r.properties.relativeLocation.properties.state;
+}).catch(error => {
+    document.getElementById("city").innerHTML = "Error: City not found!";
+    document.getElementById("county").innerHTML = "Is the requested area within the United States?";
+    document.getElementsByTagName("main")[0].innerHTML = 
+    `<p id="error"><a href="index.html">Back</a></p>`;
+})
 
 function getCounty(r){
     fetch(r.properties.county).then(e => {
         return e.json();
     }).then(r =>{
         document.getElementById("county").innerHTML = r.properties.name + " County";
+    }).catch(error => {
+        document.getElementById("city").innerHTML = "Error: City not found!";
+    document.getElementById("county").innerHTML = "Is the requested area within the United States?";
+    document.getElementsByTagName("main")[0].innerHTML = 
+    `<p id="error"><a href="index.html">Back</a></p>`;
     });
 }
 
@@ -42,6 +52,7 @@ function displayToday(){
         return e.json();
     }).then(r => {
         fetch(r.properties.forecast).then(e =>{return e.json();}).then(r => {
+            document.getElementById("info").innerHTML = "";
             var sec = document.createElement("section");
             sec.id = "today";
             var html = `<h2>Today</h2><h3>${new Date().toDateString()}</h3>`;
@@ -57,8 +68,18 @@ function displayToday(){
             }
             sec.innerHTML = html;
             document.getElementById("info").appendChild(sec);
+        }).catch(error => {
+            document.getElementById("city").innerHTML = "Error: City not found!";
+            document.getElementById("county").innerHTML = "Is the requested area within the United States?";
+            document.getElementsByTagName("main")[0].innerHTML = `<p id="error"><a href="index.html">Back</a></p>`;
+            return;
         });
-    });
+    }).catch(error => {
+        document.getElementById("city").innerHTML = "Error: City not found!";
+    document.getElementById("county").innerHTML = "Is the requested area within the United States?";
+    document.getElementsByTagName("main")[0].innerHTML = `<p id="error"><a href="index.html">Back</a></p>`;
+        return;
+    })
 }
 
 
@@ -122,4 +143,41 @@ function getData(){
         c.push([d[0], d[1]]);
     }
     return c;
+}
+
+function convertTime(date){
+    var hours = date.getHours();
+    hours = hours > 12 ? (hours - 12) + " PM" : hours + " AM";
+    return hours;
+}
+
+function clickHour(){
+    document.getElementById("info").style.display = "none";
+    document.getElementById("hourly").style.display = "block";
+    document.getElementById("weekly").style.display = "none";
+    displayHourly();
+}
+
+function displayHourly(){
+    fetch(data).then(e =>{
+        return e.json();
+    }).then(r => {
+        fetch(r.properties.forecastHourly).then(e =>{return e.json();}).then(r => {
+            var html = `<h2>Hourly</h2> <table id="hourlyTable"> <tr>`;
+            var periods = r.properties.periods;
+            for(var i = 0; i < 9; i++){
+                html += `<th>${convertTime(new Date(periods[i].startTime))}</th>`;
+            }
+            html += "</tr><tr>";
+            for(var i = 0; i < 9; i++){
+                html += `<td>${getSymbol(periods[i].shortForecast)}</td>`;
+            }
+            html +="</tr><tr>";
+            for(var i = 0; i < 9; i++){
+                html += `<td>${periods[i].temperature + periods[i].temperatureUnit}</td>`;
+            }
+            html +="</tr></table>";
+            document.getElementById("hourly").innerHTML = html;
+        });
+    });
 }
